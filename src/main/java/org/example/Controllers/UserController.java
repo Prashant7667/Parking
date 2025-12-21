@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
     @Autowired
     private UserService userService;
-    @GetMapping
+    @GetMapping("/register")
     public ResponseEntity<User> signUp(@RequestBody User user) {
        User savedUser =  userService.userSignupService(user);
        return ResponseEntity.status(HttpStatus.CREATED)
                .body(savedUser);
     }
+
 }
