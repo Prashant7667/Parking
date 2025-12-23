@@ -31,7 +31,7 @@ public class JWTUtils {
                 .parseClaimsJws(token)
                 .getBody();
     }
-    private String validateTokenAndGetEmail(String token){
+    public String validateTokenAndGetEmail(String token){
         try{
             Claims claims=parseClaims(token);
             return claims.getSubject();
