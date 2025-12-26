@@ -1,4 +1,4 @@
-package org.example.Service;
+package org.example.Config;
 
 import org.example.Config.JWTAuthenticationFilter;
 import org.springframework.context.annotation.Bean;
@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth->auth
                         .requestMatchers("/user").permitAll()
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/Pay")
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .headers(headers->headers.frameOptions(frame->frame.sameOrigin()));

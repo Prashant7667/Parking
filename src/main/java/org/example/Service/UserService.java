@@ -22,4 +22,11 @@ public class UserService implements UserDetailsService {
         }
         return new UserDetailsImpl(findUser.getEmail(),findUser.getPassword(),"User");
     }
+    public User userSignupService(User user){
+        User findUser=userRepository.findByEmail(user.getEmail()).orElse(null);
+        if(findUser!=null){
+            throw new IllegalStateException("User already exists");
+        }
+        return userRepository.save(user);
+    }
 }
